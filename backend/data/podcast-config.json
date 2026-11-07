@@ -1,14 +1,14 @@
 {
   "topic": {
-    "title": "Guerra de Chistes",
-    "premise": "Comenta de que quieres hablar"
+    "title": "Cosas de Mujeres, Exs y Vida en Pareja",
+    "premise": "Plática amena y sin filtros al estilo Hermanos de Leche (@hermanosdelechemx) sobre el FBI femenino, las indirectas, primeras citas y cómo sobrevive el hombre casado."
   },
   "characters": {
     "A": {
       "id": "A",
       "name": "Adrián Marcelo",
-      "role": "Crítico Escéptico & Arquitecto de Sistemas",
-      "systemPrompt": "Eres analítico, sarcástico con elegancia y cuestionas el hype tecnológico.",
+      "role": "Conductor @hermanosdelechemx • Psicólogo Regio & Humor Ácido",
+      "systemPrompt": "Eres Adrián Marcelo en el podcast Hermanos de Leche. Hablas relajado, irreverente, con humor negro inteligente, sarcasmo regio y observaciones psicológicas cínicas sobre las mujeres, las parejas, la peda y la sociedad. Le dices 'compadre', 'Iván' o 'chaparrito' a La Mole y te gusta sacarle la sopa o llevarle la contraria para armar el cotorreo.",
       "fishVoiceId": "3f45a7fd7a614655a61eb7027b955783",
       "avatarMode": "rig2d",
       "live2dModelUrl": "",
@@ -17,7 +17,7 @@
         "primaryColor": "#38bdf8",
         "accentColor": "#0284c7",
         "hairColor": "#3b2416",
-        "skinTone": "#eac096",
+        "skinTone": "#ebb892",
         "glasses": false,
         "headphones": false,
         "preset": "adrian"
@@ -31,17 +31,17 @@
     "B": {
       "id": "B",
       "name": "La Mole",
-      "role": "Optimista Tecnológica & Investigadora IA",
-      "systemPrompt": "Eres entusiasta, visionaria y apasionada por el futuro tecnológico.",
+      "role": "Co-conductor @hermanosdelechemx • Comediante de Barrio & Señor Regio",
+      "systemPrompt": "Eres Iván Fematt 'La Mole' en el podcast Hermanos de Leche. Hablas como comediante regio de barrio (San Nicolás / Nicolás Bravo), señor casado, bonachón, directo y maestro de las anécdotas de carnes asadas, caguamas, amigos cagapalos y vida matrimonial. Le dices 'compadre' o '¡No mames, Adrián! Nombre, cállate' cuando Adrián dice una barbaridad.",
       "fishVoiceId": "bfed5c0810a347dbb62e8ccce7f59c48",
       "avatarMode": "rig2d",
       "live2dModelUrl": "",
       "pngSprites": {},
       "rigStyle": {
-        "primaryColor": "#ec4899",
-        "accentColor": "#9333ea",
+        "primaryColor": "#f43f5e",
+        "accentColor": "#e11d48",
         "hairColor": "#1c1614",
-        "skinTone": "#eac096",
+        "skinTone": "#ebb892",
         "glasses": false,
         "headphones": false,
         "preset": "lamole"
@@ -62,46 +62,46 @@
   "autoResearchEveryTurns": 6,
   "researchSources": [
     {
-      "id": "src-1794067339230-0",
-      "sourceName": "Instituto Mexicano de la Televisión (IMTV) – Informe 2025 sobre Tendencias de Humor en Redes",
-      "fact": "El 68 % de los usuarios de TikTok que siguen cuentas de comedia reportan haber compartido al menos un video de chistes en los últimos 30 días.",
-      "subtopicAngle": "Difusión de chistes a través de plataformas de microvideo",
-      "url": "https://www.imtv.gob.mx/informes/tendencias-humor-2025"
+      "id": "hdl-src-1",
+      "sourceName": "📺 @hermanosdelechemx • Cosas de PRINCESAS DE BARRIO",
+      "fact": "Adrián: Analiza a las morras que se creen de San Pedro pero viven en barrio bravo. | La Mole: Cuenta las anécdotas de los XV años en la calle cerrando la cuadra con cumbias.",
+      "subtopicAngle": "Princesas de barrio y delirios de grandeza",
+      "url": "https://www.youtube.com/watch?v=ZnUcI15LeqA"
     },
     {
-      "id": "src-1794067339230-1",
-      "sourceName": "Universidad de Guadalajara – Departamento de Psicología Social: Estudio longitudinal 2018‑2023 sobre la relación entre el humor en vivo y la resiliencia emocional",
-      "fact": "Participar activamente en eventos de comedia en vivo aumentó la resiliencia emocional en un 27 % en jóvenes de 18‑24 años, según la escala de resiliencia de Connor‑Davidson.",
-      "subtopicAngle": "Efectos psicológicos a largo plazo del humor en vivo",
-      "url": "https://www.udg.mx/psicologia/humor-resiliencia"
+      "id": "hdl-src-2",
+      "sourceName": "📺 @hermanosdelechemx • Cosas de EX",
+      "fact": "Adrián: El nivel máximo de toxicidad es depositar $1 peso por SPEI para escribir 'Contéstame' en el concepto. | La Mole: Las llamadas a la ex a las 3 AM con grupo Pesado de fondo.",
+      "subtopicAngle": "Exs tóxicas, bloqueos de WhatsApp y despecho",
+      "url": "https://www.youtube.com/watch?v=CBwlu52vk20"
     },
     {
-      "id": "src-1794067339230-2",
-      "sourceName": "Centro de Investigación en Medios Interactivos (CIMI) – Análisis 2024 de la interacción en tiempo real durante shows de comedia",
-      "fact": "El 42 % de los espectadores que participaron mediante chat en vivo durante 'Guerra de Chistes' enviaron chistes que fueron retomados por los presentadores en menos de 15 segundos.",
-      "subtopicAngle": "Velocidad de respuesta y participación del público",
-      "url": "https://cimi.org/analisis-interactivo-2024"
+      "id": "hdl-src-3",
+      "sourceName": "📺 @hermanosdelechemx • Cosas de INFIEL",
+      "fact": "Adrián: Poner el celular boca abajo y meterse a bañar con teléfono es señal inequívoca de cuerno. | La Mole: Los amigos cagapalos que te hunden mandando audios en el grupo equivocado.",
+      "subtopicAngle": "Coartadas de infieles y amigos cagapalos",
+      "url": "https://www.youtube.com/watch?v=vdLTsXr8WkA"
     },
     {
-      "id": "src-1794067339230-3",
-      "sourceName": "Observatorio de la Industria de la Comedia (OIC) – Reporte 2025 sobre la monetización de contenido humorístico en streaming",
-      "fact": "Los shows de comedia en vivo generan, en promedio, un 3,5 % más de ingresos por suscripción que los shows de comedia pregrabados, según datos de plataformas como Blim y Vix.",
-      "subtopicAngle": "Aspectos económicos y monetización de la comedia en vivo",
-      "url": "https://oic.mx/reportes/monetizacion-comedia-2025"
+      "id": "hdl-src-4",
+      "sourceName": "📺 @hermanosdelechemx • Cosas de PRIMERA CITA",
+      "fact": "Adrián: En la primera cita van dos mentirosos fingiendo que son fit y tranquilos. | La Mole: Cuando invitabas a la huerca al cine y rezabas para que no pidiera combo grande.",
+      "subtopicAngle": "Mentiras en primeras citas y quién paga la cuenta",
+      "url": "https://www.youtube.com/watch?v=RT2g19JHoeQ"
     },
     {
-      "id": "src-1794067339230-4",
-      "sourceName": "Instituto Nacional de Estudios del Humor (INEH) – Encuesta 2023 sobre la percepción del humor político en México",
-      "fact": "El 55 % de los encuestados consideran que los chistes políticos presentados en 'Guerra de Chistes' aumentan su comprensión de temas sociales complejos.",
-      "subtopicAngle": "Impacto educativo del humor político",
-      "url": "https://ineh.org/encuestas/humor-politico-2023"
+      "id": "hdl-src-5",
+      "sourceName": "📺 @hermanosdelechemx • Cosas de BORRACHOS y CRUDA",
+      "fact": "Adrián: Las peores pedas empiezan con un 'nomás dos cheves tranquilos'. | La Mole: La cruda moral del domingo revisando la cartera vacía y los mensajes enviados anoche.",
+      "subtopicAngle": "Pedas épicas, el amigo mala copa y la cruda moral",
+      "url": "https://www.youtube.com/watch?v=JWxweyLFUYk"
     },
     {
-      "id": "src-1794067339230-5",
-      "sourceName": "Fundación Cómicos Solidarios – Estudio 2024 sobre la inclusión de comunidades marginadas en programas de comedia en vivo",
-      "fact": "El 18 % de los chistes presentados en 'Guerra de Chistes' incluyeron referencias a realidades de comunidades indígenas y afrodescendientes, lo que incrementó la percepción de inclusividad en un 31 % entre la audiencia.",
-      "subtopicAngle": "Diversidad cultural y representación en el humor",
-      "url": "https://fundacioncomicos.org/estudio-inclusion-2024"
+      "id": "hdl-src-6",
+      "sourceName": "📺 @hermanosdelechemx • Cosas de SEÑORES y REGIOS",
+      "fact": "Adrián: Eres señor cuando ir al Home Depot te emociona más que ir al antro. | La Mole: El parásito de la carne asada que pone $50 pesos y se traga todo el ribeye.",
+      "subtopicAngle": "Vida de señor casado y códigos de la carne asada regia",
+      "url": "https://www.youtube.com/watch?v=6o8yUqwxZZ8"
     }
   ]
 }

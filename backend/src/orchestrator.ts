@@ -143,9 +143,13 @@ export class PodcastOrchestrator extends EventEmitter {
         const savedPromptA = saved.characters.A?.systemPrompt || '';
         const savedPromptB = saved.characters.B?.systemPrompt || '';
         const isOldGenericA =
-          savedPromptA.includes('Sofi') || savedPromptA.includes('estudios de ingeniería');
+          savedPromptA.includes('Sofi') ||
+          savedPromptA.includes('estudios de ingeniería') ||
+          savedPromptA.includes('hype tecnológico');
         const isOldGenericB =
-          savedPromptB.includes('Alex') || savedPromptB.includes('revolución tecnológica');
+          savedPromptB.includes('Alex') ||
+          savedPromptB.includes('revolución tecnológica') ||
+          savedPromptB.includes('futuro tecnológico');
 
         this.characters = {
           A: {
@@ -189,9 +193,15 @@ export class PodcastOrchestrator extends EventEmitter {
       if (
         Array.isArray(saved.researchSources) &&
         saved.researchSources.length > 0 &&
-        !saved.researchSources[0].sourceName.includes('MIT Sloan')
+        saved.researchSources[0].sourceName.includes('hermanosdelechemx')
       ) {
         this.researchSources = saved.researchSources;
+      } else {
+        const matching = this.knowledgeService.findRelevantEpisodes(
+          `${this.topic.title} ${this.topic.premise}`,
+          6
+        );
+        this.researchSources = this.researchService.buildSourcesFromEpisodes(this.topic, matching);
       }
       this.savePersistedConfig();
     } else {
@@ -295,12 +305,13 @@ export class PodcastOrchestrator extends EventEmitter {
     try {
       const matchingEpisodes = this.knowledgeService.findRelevantEpisodes(
         `${this.topic.title} ${this.topic.premise}`,
-        3
+        6
       );
       const sources = await this.researchService.investigateTopic(
         this.topic,
         this.researchSources,
-        matchingEpisodes
+        matchingEpisodes,
+        this.knowledgeService.getAllEpisodes()
       );
       this.researchSources = sources;
       this.turnsSinceLastResearch = 0;

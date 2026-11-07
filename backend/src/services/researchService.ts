@@ -5,6 +5,7 @@ const GROQ_API_URL = 'https://api.groq.com/openai/v1/chat/completions';
 export class ResearchService {
   private apiKey: string;
   private model: string;
+  private rotationOffset = 0;
 
   constructor(
     apiKey = process.env.GROQ_API_KEY || '',
@@ -22,83 +23,91 @@ export class ResearchService {
     return [
       {
         id: 'hdl-src-1',
-        sourceName: 'Hermanos de Leche (@hermanosdelechemx) - El "No tengo nada"',
-        fact: 'Cuando tu pareja te dice "no tengo nada, haz lo que quieras", psicológicamente es una alerta roja y en realidad se acuerda de algo que hiciste hace 4 años.',
-        subtopicAngle: 'El lenguaje secreto de las mujeres cuando se enojan',
-        url: 'https://www.youtube.com/@hermanosdelechemx',
+        sourceName: '📺 @hermanosdelechemx • Cosas de PRINCESAS DE BARRIO',
+        fact: 'Adrián: Analiza a las morras que se creen de San Pedro pero viven en barrio bravo. | La Mole: Cuenta las anécdotas de los XV años en la calle cerrando la cuadra con cumbias.',
+        subtopicAngle: 'Princesas de barrio y delirios de grandeza',
+        url: 'https://www.youtube.com/watch?v=ZnUcI15LeqA',
       },
       {
         id: 'hdl-src-2',
-        sourceName: 'Hermanos de Leche (@hermanosdelechemx) - FBI Femenino en Redes',
-        fact: 'Con solo 5 minutos y una foto borrosa donde sale el reflejo de unos lentes, una mujer descubre con quién saliste, dónde cenaron y quién pagó la cuenta.',
-        subtopicAngle: 'La capacidad de investigación del FBI femenino vs. el hombre distraído',
-        url: 'https://www.youtube.com/@hermanosdelechemx',
+        sourceName: '📺 @hermanosdelechemx • Cosas de EX',
+        fact: 'Adrián: El nivel máximo de toxicidad es depositar $1 peso por SPEI para escribir "Contéstame" en el concepto. | La Mole: Las llamadas a la ex a las 3 AM con grupo Pesado de fondo.',
+        subtopicAngle: 'Exs tóxicas, bloqueos de WhatsApp y despecho',
+        url: 'https://www.youtube.com/watch?v=CBwlu52vk20',
       },
       {
         id: 'hdl-src-3',
-        sourceName: 'Hermanos de Leche (@hermanosdelechemx) - Transferencias SPEI de $1 peso',
-        fact: 'El nivel máximo del despecho moderno es cuando te bloquean de WhatsApp e Instagram y mandas una transferencia de 1 peso solo para escribir "Contéstame" en el concepto.',
-        subtopicAngle: 'Tácticas extremas de exs y relaciones tóxicas',
-        url: 'https://www.youtube.com/@hermanosdelechemx',
+        sourceName: '📺 @hermanosdelechemx • Cosas de INFIEL',
+        fact: 'Adrián: Poner el celular boca abajo y meterse a bañar con teléfono es señal inequívoca de cuerno. | La Mole: Los amigos cagapalos que te hunden mandando audios en el grupo equivocado.',
+        subtopicAngle: 'Coartadas de infieles y amigos cagapalos',
+        url: 'https://www.youtube.com/watch?v=vdLTsXr8WkA',
       },
       {
         id: 'hdl-src-4',
-        sourceName: 'Hermanos de Leche (@hermanosdelechemx) - Mentiras en Primeras Citas',
-        fact: 'En las primeras tres salidas todo el mundo finge ser fit, tranquilo y saludable, pero al mes ya están pidiendo tacos grasosos en pijama y peleando por qué ver en Netflix.',
-        subtopicAngle: 'Expectativa vs. Realidad al empezar a salir con alguien',
-        url: 'https://www.youtube.com/@hermanosdelechemx',
+        sourceName: '📺 @hermanosdelechemx • Cosas de PRIMERA CITA',
+        fact: 'Adrián: En la primera cita van dos mentirosos fingiendo que son fit y tranquilos. | La Mole: Cuando invitabas a la huerca al cine y rezabas para que no pidiera combo grande.',
+        subtopicAngle: 'Mentiras en primeras citas y quién paga la cuenta',
+        url: 'https://www.youtube.com/watch?v=RT2g19JHoeQ',
       },
       {
         id: 'hdl-src-5',
-        sourceName: 'Hermanos de Leche (@hermanosdelechemx) - El Amigo Cagapalos',
-        fact: 'El 90% de las cachadas de hombres casados no son por culpa suya, sino por el amigo imprudente que grita o manda fotos al grupo de WhatsApp equivocado.',
-        subtopicAngle: 'Los amigos cagapalos y las coartadas que salen mal',
-        url: 'https://www.youtube.com/@hermanosdelechemx',
+        sourceName: '📺 @hermanosdelechemx • Cosas de BORRACHOS y CRUDA',
+        fact: 'Adrián: Las peores pedas empiezan con un "nomás dos cheves tranquilos". | La Mole: La cruda moral del domingo revisando la cartera vacía y los mensajes enviados anoche.',
+        subtopicAngle: 'Pedas épicas, el amigo mala copa y la cruda moral',
+        url: 'https://www.youtube.com/watch?v=JWxweyLFUYk',
       },
       {
         id: 'hdl-src-6',
-        sourceName: 'Hermanos de Leche (@hermanosdelechemx) - Paz Matrimonial de Señor',
-        fact: 'Llega una edad en el matrimonio donde el hombre prefiere dar la razón de inmediato y pedir perdón por adelantado con tal de poder prender el carbón y ver el partido en paz.',
-        subtopicAngle: 'La sabiduría del señor casado para sobrevivir en pareja',
-        url: 'https://www.youtube.com/@hermanosdelechemx',
+        sourceName: '📺 @hermanosdelechemx • Cosas de SEÑORES y REGIOS',
+        fact: 'Adrián: Eres señor cuando ir al Home Depot te emociona más que ir al antro. | La Mole: El parásito de la carne asada que pone $50 pesos y se traga todo el ribeye.',
+        subtopicAngle: 'Vida de señor casado y códigos de la carne asada regia',
+        url: 'https://www.youtube.com/watch?v=6o8yUqwxZZ8',
       },
     ];
   }
 
+  /**
+   * Construye el Dossier de 6 subtemas EXCLUSIVAMENTE a partir de los transcripts y episodios
+   * de @hermanosdelechemx almacenados en Supabase / Base de Conocimiento (CERO estudios universitarios falsos).
+   */
   public async investigateTopic(
     topic: TopicConfig,
     previousSources: ResearchSourceItem[] = [],
-    matchingEpisodes: HermanosEpisodeEntry[] = []
+    matchingEpisodes: HermanosEpisodeEntry[] = [],
+    allEpisodes: HermanosEpisodeEntry[] = []
   ): Promise<ResearchSourceItem[]> {
-    const wikiSnippets = await this.fetchWikipediaContext(topic.title);
+    // Pool de episodios de @hermanosdelechemx: primero los que hacen match con el tema, luego el resto rotando
+    const usedIds = new Set(previousSources.map((s) => s.id));
+    const pool: HermanosEpisodeEntry[] = [...matchingEpisodes];
+    const seenEpIds = new Set(pool.map((e) => e.id));
 
-    if (!this.apiKey) {
-      return this.buildFallbackResearch(topic, wikiSnippets, matchingEpisodes);
+    if (allEpisodes.length > 0) {
+      this.rotationOffset = (this.rotationOffset + 3) % allEpisodes.length;
+      for (let i = 0; i < allEpisodes.length; i++) {
+        const ep = allEpisodes[(i + this.rotationOffset) % allEpisodes.length];
+        if (!seenEpIds.has(ep.id)) {
+          pool.push(ep);
+          seenEpIds.add(ep.id);
+        }
+      }
+    }
+
+    const selectedEpisodes = pool.slice(0, 6);
+
+    if (!this.apiKey || selectedEpisodes.length === 0) {
+      return this.buildSourcesFromEpisodes(topic, selectedEpisodes);
     }
 
     try {
-      const episodesText =
-        matchingEpisodes.length > 0
-          ? matchingEpisodes
-              .map(
-                (ep) =>
-                  `- Episodio "${ep.title}": Adrián opina (${ep.adrianPosition}) | La Mole opina (${ep.laMolePosition})`
-              )
-              .join('\n')
-          : 'Sin episodios específicos aún; usa el estilo clásico de comedia "Cosas de..." de Hermanos de Leche.';
-
-      const wikiContextText =
-        wikiSnippets.length > 0
-          ? wikiSnippets.map((w) => `- ${w.title}: ${w.snippet} (${w.url})`).join('\n')
-          : '';
-
-      const prevAnglesText =
-        previousSources.length > 0
-          ? `\nSUBTEMAS YA USADOS ANTES (PROHIBIDO REPETIRLOS, GENERA SITUACIONES Y ÁNGULOS NUEVOS):\n${previousSources
-              .slice(-6)
-              .map((s) => `- ${s.subtopicAngle}`)
-              .join('\n')}\n`
-          : '';
+      const episodesContext = selectedEpisodes
+        .map(
+          (ep, idx) =>
+            `${idx + 1}. EPISODIO @hermanosdelechemx: "${ep.title}" (URL: ${ep.url})\n` +
+            `   - Postura Adrián Marcelo: ${ep.adrianPosition}\n` +
+            `   - Postura La Mole: ${ep.laMolePosition}\n` +
+            `   - Citas del transcript: ${ep.transcriptExcerpts.join(' | ')}`
+        )
+        .join('\n\n');
 
       const response = await fetch(GROQ_API_URL, {
         method: 'POST',
@@ -112,142 +121,90 @@ export class ResearchService {
           messages: [
             {
               role: 'system',
-              content: `Eres el guionista e investigador de mesa del podcast "Hermanos de Leche" (@hermanosdelechemx) de Adrián Marcelo y La Mole.
-Tu tarea es armar una escaleta/dossier de 6 situaciones cotidianas muy reales, anécdotas típicas, datos curiosos o comportamientos humanos ("Cosas de...") sobre el tema del episodio para que Adrián y La Mole cotorreen, se tiren carrilla y no se ciclen.
+              content: `Eres el productor de contenidos del podcast "Hermanos de Leche" (@hermanosdelechemx) de Adrián Marcelo y La Mole.
+PROHIBIDO inventar estudios de universidades, institutos o estadísticas académicas.
+TODAS las 6 fuentes del dossier DEBEN ser episodios reales de "@hermanosdelechemx" tomados de la lista proporcionada abajo, conectándolos con el tema actual ("${topic.title}").
 Devuelve ÚNICAMENTE un arreglo JSON válido con 6 objetos con este formato exacto:
 [
   {
-    "sourceName": "Hermanos de Leche (@hermanosdelechemx) o fuente cultural real",
-    "fact": "Situación cómica real, comportamiento típico o dato curioso en 1 oración clara",
-    "subtopicAngle": "Subtema o situación específica para platicar en este turno",
-    "url": "https://www.youtube.com/@hermanosdelechemx"
+    "sourceName": "📺 @hermanosdelechemx • [Nombre del Episodio]",
+    "fact": "Adrián: [qué opina/bromea Adrián en ese transcript] | La Mole: [qué anécdota/opinión cuenta La Mole]",
+    "subtopicAngle": "Anécdota o punto específico de comedia para platicar",
+    "url": "URL de YouTube del episodio"
   }
 ]`,
             },
             {
               role: 'user',
-              content: `Tema del episodio: "${topic.title}"
-Premisa: "${topic.premise}"
-${prevAnglesText}
-Transcripts y posturas de @hermanosdelechemx relacionados:
-${episodesText}
-${wikiContextText ? `\nContexto adicional:\n${wikiContextText}` : ''}
+              content: `Tema en mesa hoy: "${topic.title}" (${topic.premise})
 
-Genera el JSON con 6 puntos/subtemas NUEVOS y muy divertidos al estilo Hermanos de Leche.`,
+EPISODIOS REALES DE @hermanosdelechemx EN SUPABASE PARA USAR COMO FUENTE:
+${episodesContext}
+
+Genera el JSON con los 6 puntos basados EXCLUSIVAMENTE en estos transcripts de @hermanosdelechemx.`,
             },
           ],
-          temperature: 0.8,
-          max_tokens: 900,
+          temperature: 0.7,
+          max_tokens: 950,
         }),
       });
 
-      if (!response.ok) {
-        return this.buildFallbackResearch(topic, wikiSnippets, matchingEpisodes);
-      }
-
-      const data = (await response.json()) as {
-        choices?: Array<{ message?: { content?: string } }>;
-      };
-
-      const raw = (data.choices?.[0]?.message?.content || '')
-        .replace(/<think>[\s\S]*?<\/think>/gi, '')
-        .trim();
-
-      const jsonMatch = raw.match(/\[[\s\S]*\]/);
-      if (jsonMatch) {
-        const parsed = JSON.parse(jsonMatch[0]) as Array<{
-          sourceName?: string;
-          fact?: string;
-          subtopicAngle?: string;
-          url?: string;
-        }>;
-        if (Array.isArray(parsed) && parsed.length > 0) {
-          return parsed.slice(0, 6).map((item, idx) => ({
-            id: `src-${Date.now()}-${idx}`,
-            sourceName: item.sourceName || `Hermanos de Leche #${idx + 1}`,
-            fact: item.fact || topic.premise,
-            subtopicAngle: item.subtopicAngle || `Situación #${idx + 1}`,
-            url: item.url || 'https://www.youtube.com/@hermanosdelechemx',
-          }));
+      if (response.ok) {
+        const data = (await response.json()) as {
+          choices?: Array<{ message?: { content?: string } }>;
+        };
+        const raw = (data.choices?.[0]?.message?.content || '')
+          .replace(/<think>[\s\S]*?<\/think>/gi, '')
+          .trim();
+        const jsonMatch = raw.match(/\[[\s\S]*\]/);
+        if (jsonMatch) {
+          const parsed = JSON.parse(jsonMatch[0]) as Array<{
+            sourceName?: string;
+            fact?: string;
+            subtopicAngle?: string;
+            url?: string;
+          }>;
+          if (Array.isArray(parsed) && parsed.length > 0) {
+            return parsed.slice(0, 6).map((item, idx) => {
+              const fallbackEp = selectedEpisodes[idx % selectedEpisodes.length];
+              return {
+                id: `hdl-ep-${fallbackEp?.videoId || idx}-${Date.now()}`,
+                sourceName:
+                  item.sourceName && item.sourceName.includes('hermanos')
+                    ? item.sourceName
+                    : `📺 @hermanosdelechemx • ${fallbackEp?.title || 'Episodio'}`,
+                fact:
+                  item.fact ||
+                  `Adrián: ${fallbackEp?.adrianPosition} | La Mole: ${fallbackEp?.laMolePosition}`,
+                subtopicAngle: item.subtopicAngle || fallbackEp?.category || topic.title,
+                url: item.url || fallbackEp?.url || 'https://www.youtube.com/@hermanosdelechemx',
+              };
+            });
+          }
         }
       }
-
-      return this.buildFallbackResearch(topic, wikiSnippets, matchingEpisodes);
-    } catch (error) {
-      console.warn('[ResearchService] Error al investigar fuentes:', error);
-      return this.buildFallbackResearch(topic, wikiSnippets, matchingEpisodes);
+    } catch (err) {
+      console.warn('[ResearchService] Usando mapeo directo de episodios Supabase:', err);
     }
+
+    return this.buildSourcesFromEpisodes(topic, selectedEpisodes, usedIds);
   }
 
-  private async fetchWikipediaContext(
-    query: string
-  ): Promise<Array<{ title: string; snippet: string; url: string }>> {
-    try {
-      const cleanQuery = query
-        .replace(/[¿?¡!]/g, '')
-        .replace(/\b(el|la|los|las|de|del|a|en|por|que|como|es|un|una|cosas)\b/gi, ' ')
-        .trim();
-
-      const url = `https://es.wikipedia.org/w/api.php?action=query&list=search&srsearch=${encodeURIComponent(
-        cleanQuery
-      )}&utf8=1&format=json&srlimit=3`;
-
-      const res = await fetch(url, {
-        headers: { 'User-Agent': 'PodcastDualIA/1.0 (Local Research Engine)' },
-      });
-      if (!res.ok) return [];
-
-      const data = (await res.json()) as {
-        query?: {
-          search?: Array<{ title: string; snippet: string; pageid: number }>;
-        };
-      };
-
-      const items = data.query?.search || [];
-      return items.map((item) => ({
-        title: item.title,
-        snippet: item.snippet.replace(/<[^>]+>/g, '').replace(/&quot;/g, '"'),
-        url: `https://es.wikipedia.org/wiki/${encodeURIComponent(item.title.replace(/ /g, '_'))}`,
-      }));
-    } catch {
-      return [];
-    }
-  }
-
-  private buildFallbackResearch(
+  public buildSourcesFromEpisodes(
     topic: TopicConfig,
-    wikiSnippets: Array<{ title: string; snippet: string; url: string }>,
-    matchingEpisodes: HermanosEpisodeEntry[] = []
+    episodes: HermanosEpisodeEntry[],
+    _usedIds?: Set<string>
   ): ResearchSourceItem[] {
-    if (matchingEpisodes.length > 0) {
-      const items: ResearchSourceItem[] = [];
-      for (const ep of matchingEpisodes) {
-        items.push({
-          id: `ep-a-${ep.id}`,
-          sourceName: `${ep.title} (@hermanosdelechemx)`,
-          fact: ep.adrianPosition,
-          subtopicAngle: `La visión ácida de Adrián sobre ${ep.category}`,
-          url: ep.url,
-        });
-        items.push({
-          id: `ep-b-${ep.id}`,
-          sourceName: `${ep.title} (@hermanosdelechemx)`,
-          fact: ep.laMolePosition,
-          subtopicAngle: `Las anécdotas de La Mole sobre ${ep.category}`,
-          url: ep.url,
-        });
-      }
-      return items.slice(0, 6);
+    if (episodes.length === 0) {
+      return this.getDefaultSources();
     }
-    if (wikiSnippets.length > 0) {
-      return wikiSnippets.map((w, idx) => ({
-        id: `wiki-${idx}`,
-        sourceName: `Hermanos de Leche • ${w.title}`,
-        fact: w.snippet,
-        subtopicAngle: `Anécdotas sobre ${w.title}`,
-        url: w.url,
-      }));
-    }
-    return this.getDefaultSources();
+
+    return episodes.slice(0, 6).map((ep, idx) => ({
+      id: `hdl-db-${ep.videoId}-${idx}`,
+      sourceName: `📺 @hermanosdelechemx • ${ep.title}`,
+      fact: `Adrián: ${ep.adrianPosition} | La Mole: ${ep.laMolePosition}`,
+      subtopicAngle: `${ep.title.replace(/^Hermanos de Leche\s*-\s*/i, '')} (${ep.category})`,
+      url: ep.url,
+    }));
   }
 }
