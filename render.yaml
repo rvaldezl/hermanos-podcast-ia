@@ -25,9 +25,9 @@ services:
       - key: FISH_VOICE_ID_B
         value: bfed5c0810a347dbb62e8ccce7f59c48
       - key: SUPABASE_URL
-        sync: false
+        value: https://geqjosyogmyaepwnrhzg.supabase.co
       - key: SUPABASE_SERVICE_KEY
-        sync: false
+        value: sb_publishable_5oc1FLMVvLE2iBVqeXdFTQ_c8bIz4yj
 
   # 2. Sitio Estático Frontend (Estudio 2D Cutout + Panel de Control + OBS Browser Source)
   - type: web
