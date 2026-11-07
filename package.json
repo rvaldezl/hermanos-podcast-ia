@@ -1,0 +1,11 @@
+{
+  "name": "podcast-dual-ia-vtuber",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Sistema completo de Podcast Dual IA VTuber 2.5D para TikTok Live",
+  "scripts": {
+    "dev:backend": "npm --prefix backend run dev",
+    "dev:frontend": "npm --prefix frontend run dev",
+    "build": "npm --prefix backend run build && npm --prefix frontend run build"
+  }
+}

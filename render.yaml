@@ -1,0 +1,43 @@
+# =============================================================================
+# RENDER.COM BLUEPRINT (render.yaml) — PLAN GRATUITO (FREE TIER)
+# Despliega automáticamente el Backend (Node/WebSockets) y el Frontend (Static)
+# =============================================================================
+services:
+  # 1. Servicio Backend (Orquestador IA + Extractor YouTube @hermanosdelechemx + WebSockets)
+  - type: web
+    name: hermanos-podcast-ia-backend
+    runtime: node
+    rootDir: backend
+    plan: free
+    buildCommand: npm install && npm run build
+    startCommand: npm run start
+    envVars:
+      - key: PORT
+        value: 3001
+      - key: GROQ_MODEL
+        value: openai/gpt-oss-20b
+      - key: GROQ_API_KEY
+        sync: false
+      - key: FISH_AUDIO_API_KEY
+        sync: false
+      - key: FISH_VOICE_ID_A
+        value: 3f45a7fd7a614655a61eb7027b955783
+      - key: FISH_VOICE_ID_B
+        value: bfed5c0810a347dbb62e8ccce7f59c48
+      - key: SUPABASE_URL
+        sync: false
+      - key: SUPABASE_SERVICE_KEY
+        sync: false
+
+  # 2. Sitio Estático Frontend (Estudio 2D Cutout + Panel de Control + OBS Browser Source)
+  - type: web
+    name: hermanos-podcast-ia-frontend
+    runtime: static
+    rootDir: frontend
+    buildCommand: npm install && npm run build
+    staticPublishPath: dist
+    envVars:
+      - key: VITE_API_URL
+        sync: false
+      - key: VITE_WS_URL
+        sync: false
