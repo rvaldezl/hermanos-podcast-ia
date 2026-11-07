@@ -105,8 +105,13 @@ export const App: React.FC = () => {
     const connectWs = () => {
       if (isUnmounted) return;
       const envWs = (import.meta as unknown as { env?: Record<string, string> }).env?.VITE_WS_URL;
+      const isRenderHost = window.location.hostname.includes('onrender.com');
       const protocol = window.location.protocol === 'https:' ? 'wss' : 'ws';
-      const wsUrl = envWs || `${protocol}://${window.location.hostname}:3001`;
+      const wsUrl =
+        envWs ||
+        (isRenderHost
+          ? 'wss://hermanos-podcast-ia-backend.onrender.com'
+          : `${protocol}://${window.location.hostname}:3001`);
       const ws = new WebSocket(wsUrl);
       wsRef.current = ws;
 
@@ -151,11 +156,11 @@ export const App: React.FC = () => {
     };
   }, [playTurn]);
 
-  const apiBase =
-    ((import.meta as unknown as { env?: Record<string, string> }).env?.VITE_API_URL || '').replace(
-      /\/$/,
-      ''
-    );
+  const isRenderHost = window.location.hostname.includes('onrender.com');
+  const apiBase = (
+    (import.meta as unknown as { env?: Record<string, string> }).env?.VITE_API_URL ||
+    (isRenderHost ? 'https://hermanos-podcast-ia-backend.onrender.com' : '')
+  ).replace(/\/$/, '');
 
   const apiPost = async <T,>(path: string, body?: unknown): Promise<T> => {
     const res = await fetch(`${apiBase}${path}`, {

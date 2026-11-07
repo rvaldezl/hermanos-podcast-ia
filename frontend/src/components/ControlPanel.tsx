@@ -1032,7 +1032,13 @@ export const ControlPanel: React.FC<ControlPanelProps> = ({
                       <button
                         onClick={() => {
                           handleSaveCharacters();
-                          void fetch('/api/voice/test', {
+                          const isRenderHost = window.location.hostname.includes('onrender.com');
+                          const base = (
+                            (import.meta as unknown as { env?: Record<string, string> }).env
+                              ?.VITE_API_URL ||
+                            (isRenderHost ? 'https://hermanos-podcast-ia-backend.onrender.com' : '')
+                          ).replace(/\/$/, '');
+                          void fetch(`${base}/api/voice/test`, {
                             method: 'POST',
                             headers: { 'Content-Type': 'application/json' },
                             body: JSON.stringify({ speaker: id }),

@@ -38,6 +38,6 @@ services:
     staticPublishPath: dist
     envVars:
       - key: VITE_API_URL
-        sync: false
+        value: https://hermanos-podcast-ia-backend.onrender.com
       - key: VITE_WS_URL
-        sync: false
+        value: wss://hermanos-podcast-ia-backend.onrender.com
